@@ -1,0 +1,203 @@
+/* Portrait mobile */
+@media all and (max-width: 1023px) and (orientation:portrait) {
+    .award {
+    	display: none;
+    }
+    header img {
+    	margin-top: 40px
+    }
+    nav li {
+    	position: fixed;
+    	top: 0px;
+    }
+    body > section > div {
+		width: 98%;
+		margin-left: 0!important;
+	}
+	body > section > code {
+		display: none;
+	}
+}
+/* Landscape mobile */
+@media all and (max-width: 1023px) {
+    .award {
+    	display: none;
+    }
+    nav li {
+    	position: fixed;
+    	top: 0px;
+    }
+    nav li:nth-child(1) {
+    	right: 218px;
+    }
+    nav li:nth-child(2) {
+    	right: 70px;
+    }
+    nav li:nth-child(3) {
+    	right: 0px;
+    }
+}
+/* "Regular" screens */
+@media all and (min-width: 1024px) and (orientation:landscape) {
+    section {	
+		margin: 12px 200px;
+	}
+	header {
+		padding: 20px 200px 17px;
+	}
+}
+/* Massive screens */
+@media all and (min-width: 1800px) and (orientation:landscape) {
+	body {
+		font-size: 30px;
+	}
+	.award {
+		font-size: 16px;
+	}
+	nav li {
+		border-radius: 32px;
+	}
+}
+
+body {
+	margin: 0;
+	font-family: helvetica, sans-serif;
+}
+
+header {
+	background-image: radial-gradient(#d5d9d5, #c0c0ca);
+	border-bottom: 2px solid white;
+	box-shadow: 1px 1px 5px grey;
+	margin-bottom: 32px;
+}
+
+div#title {
+  width: 100%;
+  height: 140px;
+}
+
+footer {
+	padding: 12px;
+	background-image: radial-gradient(#28282E, #1E1E2E);
+	border-top: 2px solid white;
+	box-shadow: 1px 1px 5px grey;
+	color: white;
+}
+
+a {
+	color: maroon;
+}
+
+ul, nav {
+	list-style: none;
+}
+
+ul {
+	padding: 0;
+	color: red;
+	font-family: Lemon;
+	text-shadow: 1px 1px 3px grey;
+}
+
+ul li {
+	padding: 8px;
+}
+
+ul li:before {
+	content: "✔ ";
+	color: red;
+}
+
+nav {
+    position: absolute;
+    z-index: 2;
+    right: 200px;
+}
+
+nav li {
+    background-image: linear-gradient(#1E1E2E, #28282E);
+    border: 2px solid white;
+    border-radius: 16px 16px 16px 16px;
+    box-shadow: 1px 3px 6px grey;
+    color: white;
+    float: right;
+    margin-right: 4px;
+    padding: 8px 16px 5px;
+}
+
+nav a {
+	color: white;
+	text-decoration: none;
+}
+
+section {
+	position: relative;
+	border-top: 1px solid lightgrey;
+}
+
+section:nth-child(2) {
+	border-top: none;
+}
+
+section > div, section > code {
+	width: 48%;
+	padding: 1.2em 1%;
+	margin: 0;
+}
+
+section > div > p {
+	margin-top: 0;
+}
+
+section > code {
+	border-radius: 2px;
+	box-shadow: 0 0 2px black;
+	line-height: 1.2em;
+	position: absolute;
+	left: 50%;
+	top: 1.2em;
+	width: 45%;
+	padding-left: 3%;
+}
+
+section:nth-child(2n + 1) > div {
+	margin-left: 50%;
+}
+
+section:nth-child(2n + 1) > code {
+	left: 0;
+}
+
+.award {
+    background-image: radial-gradient(#C8AA32, gold);
+    border: 5px double #C8AA32;
+    border-radius: 100px 100px 100px 100px;
+    box-shadow: 0 0 2px darkgoldenrod;
+    color: darkgoldenrod;
+    height: 80px;
+    padding: 30px;
+    position: absolute;
+    right: 230px;
+    text-align: center;
+    text-shadow: 0 -1px 2px white, 0 2px 2px darkgoldenrod;
+    top: 30px;
+    transform: rotate(-20deg);
+    width: 80px;
+}
+
+.award strong {
+	font-size: 4em;
+}
+
+.-webkit- .award strong {
+	font-size: 3.2em;
+}
+
+.award p {
+	margin: 0;
+}
+
+ol {
+	font-size: 1.2em;
+	line-height: 1.5em;
+}

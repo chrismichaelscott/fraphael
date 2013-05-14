@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>FRaphael - Filter Effects for Raphael.js</title>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" href="fraphael.css"/>
+		<link href='http://fonts.googleapis.com/css?family=Lemon' rel='stylesheet' type='text/css'>
+		<script type="text/javascript">
+		  
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-36097339-1']);
+			_gaq.push(['_trackPageview']);
+		  
+			(function() {
+			  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		  
+		</script>
+		<script type="application/javascript" src="prefixfree.min.js"></script>
+		<script type="application/javascript" src="jquery-1.7.1.min.js"></script>
+		<script type="application/javascript" src="raphael.js"></script>
+		<script type="application/javascript" src="fraphael.js"></script>
+		<script type="application/javascript" src="run_prettify.js"></script>
+		<script>
+			$(window).ready(function() {
+				Raphael("title").text(0, 70, "Filter Effects for Raphael.js")
+				  .attr({fill: "red", "font-size": "54", "font-weight": "bold", "font-family": "Lemon", "text-anchor": "start"})
+				  .emboss(1.6).shadow(1, 1, 2);
+				  
+				var paper = Raphael("circle", 300, 100);
+				paper.circle(50, 50, 25).attr({fill: "red"});
+				paper.circle(150, 50, 25).attr({fill: "red"}).emboss();
+				paper.circle(250, 50, 25).attr({fill: "red"}).emboss().shadow();
+				  
+				var paper2 = Raphael("filter", 200, 100);
+				var filter = paper2.createFilter("myFilter");
+				filter.addShiftToColor("red");
+				filter.addBlur(7);
+				paper2.circle(50, 50, 25).attr({fill: "green"}).filter("myFilter");
+				paper2.rect(100, 25, 50, 50).attr({fill: "blue"}).filter("myFilter");
+			});
+			$(window).scroll(function() {
+				if ($(this).scrollTop() > $('header').innerHeight() - 50) {
+					$('nav').css({position: "fixed", top: "33px"});
+				} else {
+					$('nav').css({position: "absolute", top: ""});
+				}
+			});
+		</script>
+	</head>
+	<body>
+		<header>
+			<div id="title"></div>
+			<ul>
+				<li>Make your SVGs a little funkier</li>
+				<li>Shallow learning curve</li>
+				<li>Simple extensions to Raphael.js Elements</li>
+				<li>DOM interface for more building core complex filters</li>
+			</ul>
+			<nav>
+				<li><a target="_BLANK" href="http://cloud.github.com/downloads/chrismichaelscott/iugo/iugo-mvvc.min.js">download</a></li>
+				<li><a target="_BLANK" href="http://github.com/chrismichaelscott/iugo/wiki/Documentation">documentation</a></li>
+				<li><a target="_BLANK" href="http://github.com/chrismichaelscott/iugo/wiki">wiki</a></li>
+			</nav>
+		</header>
+		<section>
+			<div>
+				<p><strong>Extension to Raphael</strong></p>
+				<p>Simply create an element using Raphael.js, then chain some effects to apply to it.</p>
+				<div id="circle"></div>
+			</div>
+			<code class="prettyprint">
+				var paper = Raphael("circle", 300, 100);
+				var attr = {fill: "red"};<br/>
+				<br/>
+				paper.circle(50, 50, 25).attr(attr);<br/>
+				paper.circle(150, 50, 25).attr(attr).emboss();<br/>
+				paper.circle(250, 50, 25).attr(attr).emboss().shadow();<br/>
+			</code>
+		</section>
+		<section>
+			<div>
+				<p><strong>Build custom filters</strong></p>
+				<p>Filter Effects for Raphael lets you build Filters in a similar way to Raphael's element methods.
+				You can create any possible filter by stacking Filter Effects and apply that filter to any Raphael Element.</p>
+				<div id="filter"></div>
+			</div>
+			<code class="prettyprint">
+				var paper = Raphael("example");<br />
+				<br />
+				var filter = paper.createFilter("myFilter");<br />
+				filter.addShiftToColor("red");<br />
+				filter.addBlur(7);<br />
+				<br />
+				var cicle = paper.circle(50, 50, 25).attr({fill: "green"});<br />
+				circle.filter("myFilter");<br />
+				<br />
+				var rect = paper.rect(100, 25, 50, 50).attr({fill: "blue"});<br />
+				rect.filter("myFilter");<br />
+			</code>
+		</section>
+		<section>
+			<div>
+				<p><strong>Use the DOM interface</strong> to take advantage of the full capacity of SVG filter effects.
+				Any valid SVG filter can be created and Filter Effects for Raphael will help you chain effects and apply
+				the results to a Raphael Element.</p>
+				<div id="plasma"></div>
+			</div>
+			<code class="prettyprint">
+				
+			</code>
+		</section>
+		<section>
+			<p><strong>Learn iugo in 3 easy steps</strong></p>
+			<ol>
+				<li>Check out the example above on <a href="http://jsfiddle.net/chrismichaelscott/fF4GD/">jsfiddle.net</a></li>
+				<li>Take the tutorial, to build a <a href="https://github.com/chrismichaelscott/iugo/wiki/Tutorial">Twitter client in 5 minutes</a></li>
+				<li><a href="http://github.com/chrismichaelscott/iugo/wiki/Documentation">RTFM</a>, man!</li>
+			</ol>
+		</section>
+		<section>
+			<p><strong>iguo is open source software,</strong> distributed under the 
+			<a href="http://opensource.org/licenses/MIT">MIT license</a>. So feel free to use it, share it or modify it however 
+			you want - even in commercial software.</p>
+			<p>If you would like to give something back you can contribute on the <a href="http://github.com/chrismichaelscott/iugo">GitHub page</a>.</p>
+		</section>
+		<section>
+			<p><strong>Browser support</strong>
+			<p>iugo should work fine on all modern browsers but has a dependency upon ECMAScript5 
+			compliant Javascript engines. Roughly, that equates to IE9+, FireFox 4+, Safari 6+, 
+			Chrome 7+, Opera 12+. The project aims to actively support IE9+, Chrome 16+ and 
+			FireFox 16+; if something isn't working on one of those platforms it's a bug, please
+			report it on the GitHub page.</p>
+			<p>However, there is still no guarantee that iugo will work on any browser. To 
+			paraphrase the license, it's your own responsibility if use this code and not this 
+			projects. This software is provided for free, so take it or leave it ☺</p>
+		</section>
+		<footer>Created by Chris Scott and supported by FactMint Ltd.</footer>
+	</body>
+</html>
