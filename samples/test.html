@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Fraphael Test Suite</title>
+<script src="raphael.js"></script>
+<script src="../fraphael.js"></script>
+<script>
+window.onload = function() {
+  var paper = Raphael("canvas", 800, 800);
+  
+  paper.circle(40, 40, 20, 20).attr({fill: "red"});
+  paper.circle(90, 40, 20, 20).attr({fill: "red"}).shadow();
+  paper.circle(140, 40, 20, 20).attr({fill: "red"}).light().shadow();
+  paper.circle(40, 90, 20, 20).attr({fill: "red"}).light(10, 10, 10).shadow();
+  paper.circle(90, 90, 20, 20).attr({fill: "grey"}).light(10, 10, 10, "blue").shadow();
+  paper.circle(140, 90, 20, 20).attr({fill: "red"}).light(0, 0, 20, "white", "specular");
+  paper.circle(40, 140, 20, 20).attr({fill: "red"}).colorShift("green", 0.5).shadow().blur();
+  paper.circle(90, 140, 20, 20).attr({fill: "red"}).emboss();
+  paper.circle(140, 140, 20, 20).attr({fill: "red"}).emboss().shadow(1, 1, 2);
+}
+</script>
+</head>
+<body>
+  <div id="canvas"></div>
+</body>

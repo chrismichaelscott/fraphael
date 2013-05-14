@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Fraphael</title>
+<script src="raphael.js"></script>
+<script src="../fraphael.js"></script>
+<script>
+window.onload = function() {
+  var paper = Raphael("canvas", 800, 200);
+  
+  paper.text(400, 100, "Filter Effect Raphael").attr({fill: "red", "font-size": "54", "font-weight": "bold", "font-family": "Lemon"})
+    .emboss(1.6).shadow(1, 1, 2);
+}
+</script>
+<link href='http://fonts.googleapis.com/css?family=Lemon' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id="canvas"></div>
+</body>
