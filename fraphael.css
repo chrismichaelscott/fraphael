@@ -84,6 +84,10 @@ footer {
 	color: white;
 }
 
+footer a {
+  color: white;
+}
+
 a {
 	color: maroon;
 }

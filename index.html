@@ -35,11 +35,18 @@
 				paper.circle(250, 50, 25).attr({fill: "red"}).emboss().shadow();
 				  
 				var paper2 = Raphael("filter", 200, 100);
-				var filter = paper2.createFilter("myFilter");
+				var filter = paper2.createFilter();
 				filter.addShiftToColor("red");
 				filter.addBlur(7);
-				paper2.circle(50, 50, 25).attr({fill: "green"}).filter("myFilter");
-				paper2.rect(100, 25, 50, 50).attr({fill: "blue"}).filter("myFilter");
+				paper2.circle(50, 50, 25).attr({fill: "green"}).filter(filter);
+				paper2.rect(100, 25, 50, 50).attr({fill: "blue"}).filter(filter);
+				  
+				var paper3 = Raphael("plasma", 200, 100);
+				var filter2 = paper3.createFilter();
+				filter2.chainEffect("feTurbulence", {type: "turbulence", baseFrequency: "0.05", numOctaves: "2"});
+				filter2.merge(filter2.getLastResult(), "SourceGraphic");
+				filter2.chainEffect("feGaussianBlur", {stdDeviation: 1});
+				paper3.circle(50, 50, 25).attr({fill: "red"}).filter(filter2);
 			});
 			$(window).scroll(function() {
 				if ($(this).scrollTop() > $('header').innerHeight() - 50) {
@@ -61,8 +68,8 @@
 			</ul>
 			<nav>
 				<li><a target="_BLANK" href="http://cloud.github.com/downloads/chrismichaelscott/iugo/iugo-mvvc.min.js">download</a></li>
-				<li><a target="_BLANK" href="http://github.com/chrismichaelscott/iugo/wiki/Documentation">documentation</a></li>
-				<li><a target="_BLANK" href="http://github.com/chrismichaelscott/iugo/wiki">wiki</a></li>
+				<li><a target="_BLANK" href="http://github.com/chrismichaelscott/fraphael/wiki/Documentation">documentation</a></li>
+				<li><a target="_BLANK" href="http://github.com/chrismichaelscott/fraphael/wiki">wiki</a></li>
 			</nav>
 		</header>
 		<section>
@@ -72,11 +79,16 @@
 				<div id="circle"></div>
 			</div>
 			<code class="prettyprint">
-				var paper = Raphael("circle", 300, 100);
+				// Create a Raphael paper <br/>
+				var paper = Raphael("example");<br/>
+				<br/>
 				var attr = {fill: "red"};<br/>
 				<br/>
+				// A plain ol' circle <br/>
 				paper.circle(50, 50, 25).attr(attr);<br/>
+				// ..with an embossed effect <br/>
 				paper.circle(150, 50, 25).attr(attr).emboss();<br/>
+				// ..and with a shadow, too! <br/>
 				paper.circle(250, 50, 25).attr(attr).emboss().shadow();<br/>
 			</code>
 		</section>
@@ -84,21 +96,21 @@
 			<div>
 				<p><strong>Build custom filters</strong></p>
 				<p>Filter Effects for Raphael lets you build Filters in a similar way to Raphael's element methods.
-				You can create any possible filter by stacking Filter Effects and apply that filter to any Raphael Element.</p>
+				You can create any possible SVG effect by stacking Filter Effects; the filter can then bee applied to any Raphael Element.</p>
 				<div id="filter"></div>
 			</div>
 			<code class="prettyprint">
 				var paper = Raphael("example");<br />
 				<br />
-				var filter = paper.createFilter("myFilter");<br />
+				var filter = paper.createFilter();<br />
 				filter.addShiftToColor("red");<br />
 				filter.addBlur(7);<br />
 				<br />
 				var cicle = paper.circle(50, 50, 25).attr({fill: "green"});<br />
-				circle.filter("myFilter");<br />
+				circle.filter(filter);<br />
 				<br />
 				var rect = paper.rect(100, 25, 50, 50).attr({fill: "blue"});<br />
-				rect.filter("myFilter");<br />
+				rect.filter(filter);<br />
 			</code>
 		</section>
 		<section>
@@ -109,34 +121,30 @@
 				<div id="plasma"></div>
 			</div>
 			<code class="prettyprint">
-				
+				var paper = Raphael("example");<br />
+				<br />
+				var filter = paper.createFilter();<br />
+				filter.chainEffect("feTurbulence", {type: "turbulence", baseFrequency: "0.05", numOctaves: "2"});<br />
+				filter.merge(filter.getLastResult(), "SourceGraphic");<br />
+				filter.chainEffect("feGaussianBlur", {stdDeviation: 1});<br />
+				<br />
+				var circle = paper.circle(50, 50, 25).attr({fill: "red"});<br />
+				circle.filter(filter);<br />
 			</code>
 		</section>
 		<section>
-			<p><strong>Learn iugo in 3 easy steps</strong></p>
+			<p><strong>Learn Filter Effects for Raphael</strong></p>
 			<ol>
-				<li>Check out the example above on <a href="http://jsfiddle.net/chrismichaelscott/fF4GD/">jsfiddle.net</a></li>
-				<li>Take the tutorial, to build a <a href="https://github.com/chrismichaelscott/iugo/wiki/Tutorial">Twitter client in 5 minutes</a></li>
-				<li><a href="http://github.com/chrismichaelscott/iugo/wiki/Documentation">RTFM</a>, man!</li>
+				<li>Check out an example on <a href="http://jsfiddle.net/chrismichaelscott/fF4GD/">jsfiddle.net</a></li>
+				<li><a href="http://github.com/chrismichaelscott/fraphael/wiki/Documentation">RTFM</a>, man!</li>
 			</ol>
 		</section>
 		<section>
-			<p><strong>iguo is open source software,</strong> distributed under the 
+			<p><strong>Filter Effects for Raphael is open source software,</strong> distributed under the 
 			<a href="http://opensource.org/licenses/MIT">MIT license</a>. So feel free to use it, share it or modify it however 
 			you want - even in commercial software.</p>
-			<p>If you would like to give something back you can contribute on the <a href="http://github.com/chrismichaelscott/iugo">GitHub page</a>.</p>
+			<p>If you would like to give something back you can contribute on the <a href="http://github.com/chrismichaelscott/fraphael">GitHub page</a>.</p>
 		</section>
-		<section>
-			<p><strong>Browser support</strong>
-			<p>iugo should work fine on all modern browsers but has a dependency upon ECMAScript5 
-			compliant Javascript engines. Roughly, that equates to IE9+, FireFox 4+, Safari 6+, 
-			Chrome 7+, Opera 12+. The project aims to actively support IE9+, Chrome 16+ and 
-			FireFox 16+; if something isn't working on one of those platforms it's a bug, please
-			report it on the GitHub page.</p>
-			<p>However, there is still no guarantee that iugo will work on any browser. To 
-			paraphrase the license, it's your own responsibility if use this code and not this 
-			projects. This software is provided for free, so take it or leave it ☺</p>
-		</section>
-		<footer>Created by Chris Scott and supported by FactMint Ltd.</footer>
+		<footer>Created by <a href="http://chrisscott.org">Chris Scott</a> and supported by <a href="http://factmint.com">FactMint Ltd</a>.</footer>
 	</body>
 </html>

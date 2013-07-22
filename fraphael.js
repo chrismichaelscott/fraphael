@@ -18,6 +18,13 @@
   var FR = {
     // Object prototype for a filter
     Filter: function(id) {
+      if (id == undefined) {
+	id = "filter-" + idCounter++;
+	while(FR.filters[id] != undefined) {
+	  id = "filter-" + idCounter++;
+	}
+      }
+      
       if (FR.filters[id] != undefined) {
 	throw "A filter with id " + id + " already exists";
       }
@@ -32,6 +39,7 @@
       this.lastFEResult = null;
       
       FR.filters[id] = this;
+      this.id = id;
     },
  
     // Object prototype for an effect
@@ -436,7 +444,9 @@ Raphael.fn.createFilter = function(id) {
 /**
  * Apply a filter to an element by id
  */
-Raphael.el.filter = function(id) {
+Raphael.el.filter = function(filter) {
+  var id = (filter instanceof FRaphael.Filter) ? filter.id : filter;
+  
   this.node.setAttribute("filter", "url(#" + id + ")");
   this.data("filterId", id);
   
