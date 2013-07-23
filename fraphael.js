@@ -344,7 +344,7 @@
 			}
 			
 			this.addOffset(dx, dy, {
-				in: "SourceAlpha",
+				in: "SourceAlpha"
 			});
 			
 			this.addRecolor(color, opacity);
@@ -373,7 +373,7 @@
 			// Create the highlight
 			
 			this.addOffset(height * x / (x + y), height * y / (x + y), {
-				in: "SourceAlpha",
+				in: "SourceAlpha"
 			});
 			
 			this.addBlur(height * 0.5);
@@ -396,7 +396,7 @@
 			// Create the lowlight
 			
 			this.addOffset(height * -1 * x / (x + y), height * -1 * y / (x + y), {
-				in: "SourceAlpha",
+				in: "SourceAlpha"
 			});
 			
 			this.addBlur(height * 0.5);
