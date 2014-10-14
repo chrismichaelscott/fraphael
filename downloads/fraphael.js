@@ -77,6 +77,8 @@
 			if (children) {
 				if (children instanceof Array) {
 					for (var x in children) {
+						if (!children.hasOwnProperty(x)) continue;
+
 						effect.element.appendChild(children[x].element);
 					}
 				} else {
@@ -303,6 +305,23 @@
 			
 			this.chainEffect("feColorMatrix", attributes);
 			
+			return this;
+		},
+	
+		addDesaturate: function(saturation, attributes) {
+			if (saturation == undefined) {
+				saturnation = 0;
+			}
+
+			if (attributes == undefined) {
+				attributes = {};
+			}
+
+            attributes.values = saturation;
+			attributes.type = "saturate";
+
+			this.chainEffect("feColorMatrix", attributes);
+
 			return this;
 		},
  
@@ -532,6 +551,24 @@ Raphael.el.colorShift = function(color, shift) {
  */
 Raphael.el.emboss = function(height) {
 	this.getFilter().createEmboss(height);
+	
+	return this;
+};
+
+/**
+ * A shorthand method for desaturating
+ */
+Raphael.el.desaturate = function(saturation) {
+	this.getFilter().addDesaturate(saturation);
+	
+	return this;
+};
+
+/**
+ * A shorthand method for complete desaturation
+ */
+Raphael.el.greyScale = function() {
+	this.getFilter().addDesaturate(0);
 	
 	return this;
 };
