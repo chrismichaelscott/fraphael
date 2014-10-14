@@ -49,7 +49,7 @@
 /* Massive screens */
 @media all and (min-width: 1800px) and (orientation:landscape) {
 	body {
-		font-size: 30px;
+		font-size: 1.1em;
 	}
 	.award {
 		font-size: 16px;
