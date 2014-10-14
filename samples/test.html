@@ -17,6 +17,9 @@ window.onload = function() {
   paper.circle(40, 140, 20, 20).attr({fill: "red"}).colorShift("green", 0.5).shadow().blur();
   paper.circle(90, 140, 20, 20).attr({fill: "red"}).emboss();
   paper.circle(140, 140, 20, 20).attr({fill: "red"}).emboss().shadow(1, 1, 2);
+  paper.circle(40, 190, 20, 20).attr({fill: "red"}).desaturate(1);
+  paper.circle(90, 190, 20, 20).attr({fill: "red"}).desaturate(0.5);
+  paper.circle(140, 190, 20, 20).attr({fill: "red"}).greyScale();
 }
 </script>
 </head>
