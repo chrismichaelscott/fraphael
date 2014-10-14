@@ -77,6 +77,8 @@
 			if (children) {
 				if (children instanceof Array) {
 					for (var x in children) {
+						if (!children.hasOwnProperty(x)) continue;
+
 						effect.element.appendChild(children[x].element);
 					}
 				} else {
