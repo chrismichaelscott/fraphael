@@ -153,7 +153,24 @@
 			
 			return this;
 		},
- 
+
+		flood: function(color, opacity, attributes) {
+			if (attributes == undefined) {
+				attributes = {};
+			}
+			
+			if (opacity == undefined) {
+				opacity = "1";
+			}
+
+			attributes["flood-color"] = color;
+			attributes["flood-opacity"] = opacity;
+			
+			this.chainEffect("feFlood", attributes);
+			
+			return this;
+		},
+
 		arithmeticCompose: function(in1, in2, k1, k2, k3, k4) {
 			if (k1 == undefined) {
 				k1 = 0;
